@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<title>Solar Sales | Φωτοβολταϊκά συστήματα</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--yellow:#FFD800;--green:#3CB043;--black:#111;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;}
+body{background:#f7f7f7;color:#222;line-height:1.5;}
+header{background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.1);position:sticky;top:0;z-index:999;}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;flex-wrap:wrap;}
+.contactHead{color:var(--black);font-size:.95rem;}
+.logoMid{display:flex;align-items:center;gap:12px;}
+#sunWrap{width:60px;height:60px;position:relative;}
+#sunWrap svg{width:100%;height:100%;}
+#rays{animation:rotate 12s linear infinite;transform-origin:center;}
+@keyframes rotate{to{transform:rotate(360deg);}}
+h1.siteTitle{color:var(--green);font-size:2.2rem;font-weight:700;letter-spacing:1px;}
+.flags{display:flex;align-items:center;gap:6px;}
+.flags img{width:24px;height:auto;border:1px solid #ddd;border-radius:2px;}
+nav{background:var(--black);display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:10px;}
+nav a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:4px;transition:.3s;cursor:pointer;}
+nav a:hover{background:var(--yellow);color:#000;}
+section{padding:20px;max-width:1000px;margin:auto;display:none;}
+section.active{display:block;}
+.prod{display:grid;gap:15px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.card{background:#fff;border:1px solid #ddd;border-radius:8px;padding:15px;display:flex;flex-direction:column;}
+.card img{width:100%;height:160px;object-fit:cover;border-radius:6px;margin-bottom:8px;}
+.price{font-size:1.2rem;font-weight:bold;color:var(--black);}
+button.add{background:var(--yellow);border:none;padding:8px 12px;border-radius:4px;cursor:pointer;margin-top:auto;}
+button.add:hover{filter:brightness(1.1);}
+.cart-float{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:10px 14px;border-radius:50%;display:flex;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.25);cursor:pointer;}
+#cartCount{background:#fff;color:var(--green);border-radius:50%;padding:2px 6px;font-weight:bold;}
+#checkout{display:none;}
+footer{background:var(--black);color:#fff;text-align:center;padding:12px;font-size:.8rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="contactHead">Τηλ 697 800 1000 | info@solarsales.gr</div>
+    <div class="logoMid">
+      <div id="sunWrap">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="24" fill="#FFD800"/>
+          <g id="rays" stroke="#FFD800" stroke-width="4" stroke-linecap="round">
+            <line x1="50" y1="4" x2="50" y2="16"/><line x1="73" y1="27" x2="82" y2="18"/><line x1="88" y1="50" x2="76" y2="50"/><line x1="73" y1="73" x2="82" y2="82"/><line x1="50" y1="96" x2="50" y2="84"/><line x1="27" y1="73" x2="18" y2="82"/><line x1="12" y1="50" x2="24" y2="50"/><line x1="27" y1="27" x2="18" y2="18"/>
+          </g><path d="M38 55 q12 10 24 0" stroke="#000" stroke-width="3" fill="none"/><circle cx="42" cy="45" r="2" fill="#000"/><circle cx="58" cy="45" r="2" fill="#000"/>
+        </svg>
+      </div>
+      <h1 class="siteTitle">Solar Sales</h1>
+    </div>
+    <div class="flags">
+      <a onclick="setLang('el')"><img src="https://flagcdn.com/24x18/gr.png" alt="GR"></a>
+      <a onclick="setLang('en')"><img src="https://flagcdn.com/24x18/gb.png" alt="EN"></a>
+      <span id="cartSum" class="cart-float" onclick="showCheckout()">🛒<span id="cartCount">0</span></span>
+    </div>
+  </div>
+  <nav>
+    <a onclick="showSec('about')" data-key="navAbout">About us</a>
+    <a onclick="showSec('inverters')" data-key="navInv">Inverters</a>
+    <a onclick="showSec('batteries')" data-key="navBat">Batteries</a>
+    <a onclick="showSec('panels')" data-key="navPan">PV Panels</a>
+    <a onclick="showSec('acc')" data-key="navAcc">Accessories</a>
+    <a onclick="showSec('info')" data-key="navInfo">General Info</a>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="active">
+  <h2>Η εταιρεία μας</h2>
+  <p>Η Solar Sales εισάγει απευθείας από τα μεγαλύτερα εργοστάσια της Κίνας υβριδικά inverter, μπαταρίες LiFePO₄, PV Panels και αξεσουάρ προσφέροντας έτοιμα πακέτα φωτοβολταϊκών συστημάτων σε ιδιώτες και επαγγελματίες σε όλη την Ελλάδα.</p>
+</section>
+
+<!-- INVERTERS -->
+<section id="inverters">
+  <h2>Inverters</h2>
+  <div class="prod">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=60" alt="Deye Inverter">
+      <h3>SUN-8K-SG01LP1-EU</h3>
+      <p>Single phase, 8 kW</p>
+      <p class="price">€2 100 <span>με ΦΠΑ</span></p>
+      <button class="add" onclick="addCart('Deye 8kW',2100)">+ 🛒</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=60" alt="Deye Inverter">
+      <h3>SUN-12K-SG04LP3-EU</h3>
+      <p>Three phase, 12 kW</p>
+      <p class="price">€3 185 <span>με ΦΠΑ</span></p>
+      <button class="add" onclick="addCart('Deye 12kW 3F',3185)">+ 🛒</button>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=60" alt="Deye Inverter">
+      <h3>SUN-16K-SG01LP1-EU</h3>
+      <p>Single phase, 16 kW</p>
+      <p class="price">€4 350 <span>με ΦΠΑ</span></p>
+      <button class="add" onclick="addCart('Deye 16kW',4350)">+ 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- BATTERIES -->
+<section id="batteries">
+  <h2>Batteries</h2>
+  <div class="prod">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=800&q=60" alt="Battery">
+      <h3>SE-G5.1 Pro-B</h3>
+      <p>51.2 V · 100 Ah · 5.12 kWh</p>
+      <p class="price">€1 360 <span>με ΦΠΑ</span></p>
+      <button class="add" onclick="addCart('Deye 5.1 kWh Batt',1360)">+ 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSORIES -->
+<section id="acc">
+  <h2>Accessories</h2>
+  <div class="prod">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=800&q=60" alt="Battery Rack">
+      <h3>Cabinet 13-slot</h3>
+      <p>Rack for 12 batteries + BMS space</p>
+      <p class="price">€340 <span>με ΦΠΑ</span></p>
+      <button class="add" onclick="addCart('Batt Cabinet',340)">+ 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- PANELS -->
+<section id="panels">
+  <h2>PV Panels</h2>
+  <div class="prod">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=60" alt="Trina Panel">
+      <h3>Trina TSM-NEG21 C.20</h3>
+      <p>Bifacial, half-cut cells, +15-20 % more yield.</p>
+      <p class="price">€240 <span>με ΦΠΑ</span></p>
+      <button class="add" onclick="addCart('Trina 710 W',240)">+ 🛒</button>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section id="info">
+  <h2>Όροι & Πληροφορίες</h2>
+  <p>Παραλαβή από την έδρα μας (Ηλιούπολη) ή αποστολή σε όλη την Ελλάδα. Οι τιμές ισχύουν μέχρι εξαντλήσεως αποθέματος. Όλα τα προϊόντα συνοδεύονται από επίσημη εγγύηση του κατασκευαστή. ΦΠΑ 24 % περιλαμβάνεται.</p>
+  <p>Αναστασάκος Β. Θεόδωρος | ΑΦΜ 025170318 | ΔΟΥ Σπάρτης | IBAN GR8601103320000033200485267</p>
+</section>
+
+<!-- CHECKOUT (hidden until cart icon clicked) -->
+<section id="checkout" style="display:none;">
+  <h2>Ολοκλήρωση παραγγελίας</h2>
+  <form action="https://formsubmit.co/costast52@gmail.com" method="POST">
+    <input type="hidden" name="_cc" value="info@solarsales.gr">
+    <input type="hidden" name="_subject" value="Νέα Παραγγελία Solar Sales">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_autoresponse" value="Ευχαριστούμε για την παραγγελία σας! Θα επικοινωνήσουμε άμεσα.">
+    <label>Ονοματεπώνυμο *</label><input type="text" name="name" required>
+    <label>Email *</label><input type="email" name="email" required>
+    <label>Τηλέφωνο *</label><input type="tel" name="phone" required>
+    <label>Διεύθυνση αποστολής *</label><textarea name="address" required></textarea>
+    <label>Τρόπος πληρωμής</label>
+    <select name="payment">
+      <option value="bank">Τραπεζική κατάθεση</option>
+      <option value="card">Χρεωστική/Πιστωτική κάρτα</option>
+      <option value="iris">IRIS</option>
+    </select>
+    <label><input type="checkbox" name="gdpr" required>Συναινώ στη συλλογή & επεξεργασία των στοιχείων μου σύμφωνα με την Πολιτική Απορρήτου (GDPR).</label>
+    <textarea name="cart" id="cartField" style="display:none;"></textarea>
+    <button type="submit">Αποστολή Παραγγελίας</button>
+  </form>
+  <p style="margin-top:15px;"><a href="#" onclick="showSec('about'); return false;">← Επιστροφή στο κατάστημα</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Solar Sales – Φωτοβολταϊκά συστήματα για κάθε σπίτι.</p>
+</footer>
+
+<script>
+let cart=[];
+function addCart(name,price){
+  cart.push({name,price});
+  document.getElementById('cartCount').textContent=cart.length;
+  localStorage.setItem('solCart',JSON.stringify(cart));
+}
+function loadCart(){
+  const c=localStorage.getItem('solCart');
+  if(c){cart=JSON.parse(c);document.getElementById('cartCount').textContent=cart.length;}
+  let txt=''; cart.forEach(i=>txt+=`${i.name} €${i.price}\n`);
+  document.getElementById('cartField').value=txt;
+}
+window.addEventListener('load',loadCart);
+function showSec(id){
+  document.querySelectorAll('section').forEach(s=>s.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+</script>
+</body>
+</html>
